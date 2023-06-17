@@ -3,7 +3,7 @@
 
 default: version
 	mkdir -p build
-	cmake . -B build -DDEVICE=${DEVICE} && cd build && make -j16
+	cmake . -B build -DDEVICE=${DEVICE} -DCMAKE_EXPORT_COMPILE_COMMANDS=YES && ln -sf build/compile_commands.json . && cd build && make -j16
 
 rebuild: version
 	cd build && make -j16

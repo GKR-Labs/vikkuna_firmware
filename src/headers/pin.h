@@ -6,7 +6,7 @@
 // PICO PINS.
 #define PIN_GROUP_PICO 1
 #define PIN_GROUP_PICO_END 99
-#define PIN_HOME 20
+#define PIN_HOME 13
 #define PIN_LED_PICO 25
 #define PIN_LED_UP 2
 #define PIN_LED_RIGHT 5
@@ -21,10 +21,12 @@
 #define PIN_SPI_CK 10
 #define PIN_SPI_TX 11
 #define PIN_SPI_RX 12
-#define PIN_SPI_CS0 18
-#define PIN_SPI_CS1 19
+#define PIN_SPI_CS0 0
+#define PIN_SPI_CS1 1
 #define PIN_TX 27
 #define PIN_TY 26
+#define PIN_RIGHT_THUMBSTICK_X 29
+#define PIN_RIGHT_THUMBSTICK_Y 28
 
 // IO EXPANSION 1.
 #define PIN_GROUP_IO_0 100
@@ -51,14 +53,16 @@
 #define PIN_B 210
 #define PIN_X 213
 #define PIN_Y 211
-#define PIN_DHAT_LEFT 203
-#define PIN_DHAT_RIGHT 205
-#define PIN_DHAT_UP 206
-#define PIN_DHAT_DOWN 202
-#define PIN_DHAT_PUSH 204
+// #define PIN_DHAT_LEFT 203
+// #define PIN_DHAT_RIGHT 205
+// #define PIN_DHAT_UP 206
+// #define PIN_DHAT_DOWN 202
+// #define PIN_DHAT_PUSH 204
 #define PIN_R1 212
 #define PIN_R2 214
 #define PIN_R4 207
+
+#define PIN_R3 202
 
 // SPECIAL PINS.
 #define PIN_GROUP_SPECIAL 250

@@ -78,6 +78,8 @@ typedef struct Config_struct {
     double offset_accel_1_x;
     double offset_accel_1_y;
     double offset_accel_1_z;
+    float offset_rts_x;
+    float offset_rts_y;
     uint8_t padding[256]; // Guarantee block is at least 256 bytes or more.
 } Config;
 
@@ -87,6 +89,7 @@ Config* config_read();
 void config_delete();
 
 void config_set_thumbstick_offset(float x, float y);
+void config_set_right_thumbstick_offset(float x, float y);
 void config_set_gyro_offset(double ax, double ay, double az, double bx, double by, double bz);
 void config_set_accel_offset(double ax, double ay, double az, double bx, double by, double bz);
 uint8_t config_get_protocol();

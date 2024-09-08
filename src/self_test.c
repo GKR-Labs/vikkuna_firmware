@@ -65,24 +65,24 @@ void self_test_thumbstick(Thumbstick* thumbstick) {
     thumbstick->reset(thumbstick);
 }
 
-void self_test_dhat_press(Dhat* dhat, const char *buttonName, Button* button) {
-    info("Press DHat '%s': WAITING", buttonName);
-    while (!button->is_pressed(button)) {
-        uart_listen_char_limited();
-        bus_i2c_io_cache_update();
-        dhat->update(dhat);
-        sleep_ms(1);
-    }
-    info("\rPress DHat '%s': OK     \n", buttonName);
-}
+// void self_test_dhat_press(Dhat* dhat, const char *buttonName, Button* button) {
+//     info("Press DHat '%s': WAITING", buttonName);
+//     while (!button->is_pressed(button)) {
+//         uart_listen_char_limited();
+//         bus_i2c_io_cache_update();
+//         dhat->update(dhat);
+//         sleep_ms(1);
+//     }
+//     info("\rPress DHat '%s': OK     \n", buttonName);
+// }
 
-void self_test_dhat(Dhat* dhat) {
-    self_test_dhat_press(dhat, "left", &(dhat->mid_left));
-    self_test_dhat_press(dhat, "right", &(dhat->mid_right));
-    self_test_dhat_press(dhat, "up", &(dhat->up_center));
-    self_test_dhat_press(dhat, "down", &(dhat->down_center));
-    self_test_dhat_press(dhat, "push", &(dhat->mid_center));
-}
+// void self_test_dhat(Dhat* dhat) {
+//     self_test_dhat_press(dhat, "left", &(dhat->mid_left));
+//     self_test_dhat_press(dhat, "right", &(dhat->mid_right));
+//     self_test_dhat_press(dhat, "up", &(dhat->up_center));
+//     self_test_dhat_press(dhat, "down", &(dhat->down_center));
+//     self_test_dhat_press(dhat, "push", &(dhat->mid_center));
+// }
 
 void self_test_rotary_direction(Rotary* rotary, const char *name, int8_t direction) {
     rotary->increment = 0;
@@ -107,7 +107,7 @@ void self_test() {
     Profile* profile = profile_get_active(true);
     self_test_buttons(profile);
     self_test_thumbstick(&(profile->thumbstick));
-    self_test_dhat(&(profile->dhat));
+    // self_test_dhat(&(profile->dhat));
     self_test_rotary(&(profile->rotary));
     info("Tests done\n");
     info("==========\n");

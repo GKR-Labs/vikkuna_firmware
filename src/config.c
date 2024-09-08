@@ -127,7 +127,7 @@ void config_write_init() {
     config_cache = (Config){
         .header = NVM_CONTROL_BYTE,
         .config_version = NVM_CONFIG_VERSION,
-        .profile = 1,
+        .profile = 7,
         .protocol = 0,
         .sens_mouse = 0,
         .sens_touch = 0,
@@ -146,7 +146,9 @@ void config_write_init() {
         .offset_accel_0_z = 0,
         .offset_accel_1_x = 0,
         .offset_accel_1_y = 0,
-        .offset_accel_1_z = 0
+        .offset_accel_1_z = 0,
+        .offset_rts_x = 0,
+        .offset_rts_y = 0
     };
     config_cache.sens_mouse_values[0] = 1.0,
     config_cache.sens_mouse_values[1] = 1.5,
@@ -236,6 +238,12 @@ uint8_t config_get_profile() {
 void config_set_thumbstick_offset(float x, float y) {
     config_cache.offset_ts_x = x;
     config_cache.offset_ts_y = y;
+    config_cache_synced = false;
+}
+
+void config_set_right_thumbstick_offset(float x, float y) {
+    config_cache.offset_rts_x = x;
+    config_cache.offset_rts_y = y;
     config_cache_synced = false;
 }
 
@@ -347,6 +355,7 @@ void config_reset_profiles() {
 void config_calibrate_execute() {
     led_set_mode(LED_MODE_CYCLE);
     thumbstick_calibrate();
+    right_thumbstick_calibrate();
     imu_calibrate();
     profile_led_lock = false;
     led_set_mode(LED_MODE_IDLE);
@@ -435,6 +444,7 @@ void config_set_mouse_sens_preset(uint8_t preset, bool notify_webusb) {
 void config_set_deadzone_preset(uint8_t preset, bool notify_webusb) {
     config_cache.deadzone = preset;
     thumbstick_update_deadzone();
+    right_thumbstick_update_deadzone();
     if (notify_webusb) webusb_set_pending_config_share(DEADZONE);
     info("Config: Deadzone preset %i\n", preset);
 }

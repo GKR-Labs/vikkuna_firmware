@@ -49,7 +49,6 @@ target_sources(${PROJECT} PUBLIC
     src/common.c
     src/config.c
     src/ctrl.c
-    src/dhat.c
     src/glyph.c
     src/gyro.c
     src/hid.c
@@ -71,6 +70,7 @@ target_sources(${PROJECT} PUBLIC
     src/self_test.c
     src/rotary.c
     src/thumbstick.c
+    src/right_thumbstick.c
     src/touch.c
     src/tusb_config.c
     src/uart.c

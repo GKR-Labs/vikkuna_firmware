@@ -51,7 +51,8 @@ void Profile__report(Profile *self) {
     self->r2.report(&self->r2);
     self->l4.report(&self->l4);
     self->r4.report(&self->r4);
-    self->dhat.report(&self->dhat);
+    // self->dhat.report(&self->dhat);
+    self->rThumbstick.report(&self->rThumbstick);
     self->rotary.report(&self->rotary);
     self->thumbstick.report(&self->thumbstick);
     self->gyro.report(&self->gyro);
@@ -76,7 +77,8 @@ void Profile__reset(Profile *self) {
     self->r2.reset(&self->r2);
     self->l4.reset(&self->l4);
     self->r4.reset(&self->r4);
-    self->dhat.reset(&self->dhat);
+    // self->dhat.reset(&self->dhat);
+    self->rThumbstick.reset(&self->rThumbstick);
     self->rotary.reset(&self->rotary);
     self->thumbstick.reset(&self->thumbstick);
     self->gyro.reset(&self->gyro);
@@ -103,17 +105,17 @@ void Profile__load_from_config(Profile *self, CtrlProfile *profile) {
     self->l4 =         Button_from_ctrl(PIN_L4,         profile->sections[SECTION_L4]);
     self->r4 =         Button_from_ctrl(PIN_R4,         profile->sections[SECTION_R4]);
     // Dhat.
-    self->dhat = Dhat_(
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_LEFT]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_RIGHT]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UP]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DOWN]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UL]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UR]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DL]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DR]),
-        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_PUSH])
-    );
+    // self->dhat = Dhat_(
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_LEFT]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_RIGHT]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UP]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DOWN]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UL]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UR]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DL]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DR]),
+    //     Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_PUSH])
+    // );
     // Rotary.
     CtrlRotary up = profile->sections[SECTION_ROTARY_UP].rotary;
     CtrlRotary down = profile->sections[SECTION_ROTARY_DOWN].rotary;
@@ -175,6 +177,18 @@ void Profile__load_from_config(Profile *self, CtrlProfile *profile) {
             }
         }
     }
+    // RThumbstick.
+    self->rThumbstick = RThumbstick_(
+        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_LEFT]),
+        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_RIGHT]),
+        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_UP]),
+        Button_from_ctrl(PIN_VIRTUAL, profile->sections[SECTION_DHAT_DOWN]),
+        Button_from_ctrl(PIN_R3, profile->sections[SECTION_DHAT_PUSH]),
+        ctrl_thumbtick.deadzone_override,
+        ctrl_thumbtick.deadzone / 100.0,
+        ctrl_thumbtick.antideadzone / 100.0,
+        (int8_t)ctrl_thumbtick.overlap / 100.0
+    );
     // Gyro.
     CtrlGyro ctrl_gyro = profile->sections[SECTION_GYRO].gyro;
     CtrlGyroAxis ctrl_gyro_x = profile->sections[SECTION_GYRO_X].gyro_axis;

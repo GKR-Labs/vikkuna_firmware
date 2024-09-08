@@ -4,7 +4,8 @@
 #pragma once
 #include "button.h"
 #include "thumbstick.h"
-#include "dhat.h"
+#include "right_thumbstick.h"
+// #include "dhat.h"
 #include "rotary.h"
 #include "gyro.h"
 #include "webusb.h"
@@ -59,7 +60,8 @@ struct Profile_struct {
     Button r2;
     Button r4;
     Thumbstick thumbstick;
-    Dhat dhat;
+    RThumbstick rThumbstick;
+    // Dhat dhat;
     Rotary rotary;
     Gyro gyro;
 };

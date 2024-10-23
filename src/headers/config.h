@@ -66,6 +66,8 @@ typedef struct Config_struct {
     float deadzone_values[3];
     float offset_ts_x;
     float offset_ts_y;
+    float offset_rts_x;
+    float offset_rts_y;
     double offset_gyro_0_x;
     double offset_gyro_0_y;
     double offset_gyro_0_z;
@@ -78,8 +80,6 @@ typedef struct Config_struct {
     double offset_accel_1_x;
     double offset_accel_1_y;
     double offset_accel_1_z;
-    float offset_rts_x;
-    float offset_rts_y;
     uint8_t padding[256]; // Guarantee block is at least 256 bytes or more.
 } Config;
 

@@ -33,11 +33,8 @@ void title() {
 }
 
 void main_init() {
-    // config_write_init();
     // LED feedback ASAP after booting.
     led_init();
-    // Init stdio and logging.
-    // stdio_uart_init();
     stdio_init_all();
     logging_set_level(LOG_INFO);
     logging_init();

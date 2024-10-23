@@ -5,7 +5,6 @@
 #include "button.h"
 #include "thumbstick.h"
 #include "right_thumbstick.h"
-// #include "dhat.h"
 #include "rotary.h"
 #include "gyro.h"
 #include "webusb.h"
@@ -61,7 +60,6 @@ struct Profile_struct {
     Button r4;
     Thumbstick thumbstick;
     RThumbstick rThumbstick;
-    // Dhat dhat;
     Rotary rotary;
     Gyro gyro;
 };

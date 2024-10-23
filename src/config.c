@@ -127,7 +127,7 @@ void config_write_init() {
     config_cache = (Config){
         .header = NVM_CONTROL_BYTE,
         .config_version = NVM_CONFIG_VERSION,
-        .profile = 7,
+        .profile = 1,
         .protocol = 0,
         .sens_mouse = 0,
         .sens_touch = 0,
@@ -135,6 +135,8 @@ void config_write_init() {
         .vibration = 0,
         .offset_ts_x = 0,
         .offset_ts_y = 0,
+        .offset_rts_x = 0,
+        .offset_rts_y = 0,
         .offset_gyro_0_x = 0,
         .offset_gyro_0_y = 0,
         .offset_gyro_0_z = 0,
@@ -146,9 +148,7 @@ void config_write_init() {
         .offset_accel_0_z = 0,
         .offset_accel_1_x = 0,
         .offset_accel_1_y = 0,
-        .offset_accel_1_z = 0,
-        .offset_rts_x = 0,
-        .offset_rts_y = 0
+        .offset_accel_1_z = 0
     };
     config_cache.sens_mouse_values[0] = 1.0,
     config_cache.sens_mouse_values[1] = 1.5,

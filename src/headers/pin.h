@@ -53,16 +53,10 @@
 #define PIN_B 210
 #define PIN_X 213
 #define PIN_Y 211
-// #define PIN_DHAT_LEFT 203
-// #define PIN_DHAT_RIGHT 205
-// #define PIN_DHAT_UP 206
-// #define PIN_DHAT_DOWN 202
-// #define PIN_DHAT_PUSH 204
 #define PIN_R1 212
 #define PIN_R2 214
-#define PIN_R4 207
-
 #define PIN_R3 202
+#define PIN_R4 207
 
 // SPECIAL PINS.
 #define PIN_GROUP_SPECIAL 250

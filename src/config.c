@@ -127,7 +127,7 @@ void config_write_init() {
     config_cache = (Config){
         .header = NVM_CONTROL_BYTE,
         .config_version = NVM_CONFIG_VERSION,
-        .profile = 7,
+        .profile = 1,
         .protocol = 0,
         .sens_mouse = 0,
         .sens_touch = 1,
@@ -153,7 +153,7 @@ void config_write_init() {
         .log_mask = 0,
         .long_calibration = 0,
         .swap_gyros = 0,
-        .touch_invert_polarity = 0
+        .touch_invert_polarity = 0,
     };
     config_cache.sens_mouse_values[0] = 1.0,
     config_cache.sens_mouse_values[1] = 1.5,

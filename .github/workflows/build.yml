@@ -42,6 +42,10 @@ jobs:
           echo "VERSION=$VERSION"
 
           make clean
+          DEVICE=vikkuna_v0 make
+          mv build/alpakka.uf2 vikkuna_rp2040zero_${VERSION}.uf2
+
+          make clean
           DEVICE=alpakka_v0 make
           mv build/alpakka.uf2 alpakka_pico_${VERSION}.uf2
 
@@ -54,6 +58,7 @@ jobs:
           mv build/alpakka.uf2 dongle_marmota_${VERSION}.uf2
 
           ls -l
+          shasum vikkuna_rp2040zero_${VERSION}.uf2
           shasum alpakka_pico_${VERSION}.uf2
           shasum alpakka_marmota_${VERSION}.uf2
           shasum dongle_marmota_${VERSION}.uf2
@@ -70,6 +75,8 @@ jobs:
           ${GITHUB_SHA}
 
           Checksums:
+          \$ shasum vikkuna_rp2040zero_${VERSION}.uf2
+          $(cat vikkuna_rp2040zero_${VERSION}.uf2 | shasum | head -c 40)
           \$ shasum alpakka_pico_${VERSION}.uf2
           $(cat alpakka_pico_${VERSION}.uf2 | shasum | head -c 40)
           \$ shasum alpakka_marmota_${VERSION}.uf2
@@ -86,6 +93,7 @@ jobs:
         with:
           name: alpakka_artifacts
           path: |
+            vikkuna_rp2040zero_${{env.VERSION}}.uf2
             alpakka_pico_${{env.VERSION}}.uf2
             alpakka_marmota_${{env.VERSION}}.uf2
             dongle_marmota_${{env.VERSION}}.uf2

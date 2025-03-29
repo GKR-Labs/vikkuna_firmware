@@ -65,7 +65,9 @@ static void title(char *label) {
     info("║ %s ║\n"         , label);
     info("╚====================╝\n");
     info("Firmware version: %s\n", VERSION);
-    #if defined DEVICE_ALPAKKA_V0
+    #if defined DEVICE_VIKKUNA_V0
+        info("Compilation target: Vikkuna v0\n");
+    #elif defined DEVICE_ALPAKKA_V0
         info("Compilation target: Alpakka v0\n");
     #elif defined DEVICE_ALPAKKA_V1
         info("Compilation target: Alpakka v1\n");

@@ -22,6 +22,7 @@ With `apt`, `rpm`, `pacman`, `brew`, or the equivalent package manager of your s
 - `make install`: Download and configure dependencies automatically.
 
 ## Compilation targets
+- `vikkuna_v0`: Vikkuna v0.x.x with RP2040-Zero.
 - `alpakka_v0`: Alpakka v0.x.x with Raspberry Pico.
 - `alpakka_v1`: Alpakka v1.x.x with Marmota module.
 - `dongle`: Wireless dongle.

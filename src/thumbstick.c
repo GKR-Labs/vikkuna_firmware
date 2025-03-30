@@ -93,7 +93,7 @@ void thumbstick_calibrate() {
     float rx = 0;
     float ry = 0;
     thumbstick_calibrate_each(PIN_THUMBSTICK_LX, PIN_THUMBSTICK_LY, &lx, &ly);
-    #ifdef DEVICE_ALPAKKA_V1
+    #if defined(DEVICE_ALPAKKA_V1) || defined(DEVICE_VIKKUNA_V0)
         thumbstick_calibrate_each(PIN_THUMBSTICK_RX, PIN_THUMBSTICK_RY, &rx, &ry);
     #endif
     config_set_thumbstick_offset(lx, ly, rx, ry);
@@ -105,7 +105,7 @@ void thumbstick_init() {
     adc_init();
     adc_gpio_init(PIN_THUMBSTICK_LX);
     adc_gpio_init(PIN_THUMBSTICK_LY);
-    #ifdef DEVICE_ALPAKKA_V1
+    #if defined(DEVICE_ALPAKKA_V1) || defined(DEVICE_VIKKUNA_V0)
         adc_gpio_init(PIN_THUMBSTICK_RX);
         adc_gpio_init(PIN_THUMBSTICK_RY);
     #endif
@@ -163,7 +163,11 @@ void thumbstick_from_ctrl(Thumbstick *thumbstick, CtrlProfile *ctrl, uint8_t ind
         index,
         index==0 ? PIN_THUMBSTICK_LX : PIN_THUMBSTICK_RX,
         index==0 ? PIN_THUMBSTICK_LY : PIN_THUMBSTICK_RY,
+        #ifdef DEVICE_VIKKUNA_V0
+        index==0 ? false : false,
+        #else
         index==0 ? false : true,
+        #endif
         index==0 ? false : false,
         ctrl_thumbtick.mode,
         ctrl_thumbtick.distance_mode,

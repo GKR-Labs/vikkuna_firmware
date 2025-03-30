@@ -124,10 +124,15 @@ void config_profile_default_console_legacy(CtrlProfile *profile){
     // Thumbstick (right) / DHat.
     profile->sections[SECTION_RSTICK_SETTINGS].thumbstick = (CtrlThumbstick){
         .mode=THUMBSTICK_MODE_4DIR,
+        #ifdef DEVICE_VIKKUNA_V0
+        .saturation=100,
+        .overlap=50,
+        #else
         .saturation=70,
         .overlap=50,
         .deadzone_override=true,
         .deadzone=15,
+        #endif
     };
     profile->sections[SECTION_RSTICK_LEFT].button = (CtrlButton){
         .mode=NORMAL,

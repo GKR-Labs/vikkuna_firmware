@@ -56,9 +56,9 @@ void Profile__report(Profile *self) {
     self->r4.report(&self->r4);
     self->rotary.report(&self->rotary);
     self->left_thumbstick.report(&self->left_thumbstick);
-    #if defined DEVICE_ALPAKKA_V0
+    #if defined(DEVICE_ALPAKKA_V0) && !defined(DEVICE_VIKKUNA_V0)
         self->dhat.report(&self->dhat);
-    #elif defined DEVICE_ALPAKKA_V1
+    #elif defined(DEVICE_ALPAKKA_V1) || defined(DEVICE_VIKKUNA_V0)
         self->right_thumbstick.report(&self->right_thumbstick);
     #endif
     self->gyro.report(&self->gyro);

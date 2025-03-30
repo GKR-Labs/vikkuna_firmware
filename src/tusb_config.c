@@ -11,7 +11,10 @@
 static const char *const descriptor_string[] = {
     (const char[]){0x09, 0x04},  // English.
     STRING_VENDOR,
-    #if defined DEVICE_ALPAKKA_V0
+    #if defined DEVICE_VIKKUNA_V0
+        STRING_PRODUCT_ALPAKKA,
+        STRING_VERSION_ALPAKKA_V1,
+    #elif defined DEVICE_ALPAKKA_V0
         STRING_PRODUCT_ALPAKKA,
         STRING_VERSION_ALPAKKA_V0,
     #elif defined DEVICE_ALPAKKA_V1
